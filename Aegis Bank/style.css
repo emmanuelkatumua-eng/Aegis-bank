@@ -1,0 +1,358 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    /* pour empecher. tout débordement horizontal sur toute la page*/
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+    /* Interdit le scroll */
+
+
+}
+
+header {
+    width: 100%;
+    flex-shrink: 0;
+    /* Empêche le header de s'écraser */
+    z-index: 10;
+}
+
+.navbar {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    text-align: left;
+    height: 80px;
+    /* 100% avec box-sizing pour eviter que le padding n'élargisse la barre*/
+    background-color: #ffffff;
+    color: #000000;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    /*Crucial pour le mobile first*/
+    z-index: 1000
+}
+
+.navbar__logo-img {
+
+
+    height: 80px;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+    transition: transform 0.3 ease;
+    background-color: #ffffff
+}
+
+.hamburger {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001;
+
+}
+
+.hamburger__line:hover {
+
+    background-color: #6a0dad;
+    transition: 0.3s;
+
+
+}
+
+.hamburger__line {
+
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+    transition: 0.3s;
+
+
+}
+
+.page-bg {
+
+    /* --- Gestion du Flex (Zéro Scroll) --- */
+    flex: 1;
+    /* Prend tout l'espace restant après le header */
+    display: flex;
+    /* Pour pouvoir pousser le footer vers le bas */
+    flex-direction: column;
+    min-height: 0;
+    /* Indispensable pour éviter que le contenu ne force un scroll */
+    width: 100%;
+    overflow: hidden;
+
+
+
+    background-image: url(Gemini_Generated_Image_yc3ryoyc3ryoyc3r.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    /*Pour que background ne depasse pas*/
+
+}
+
+.page-bg__overlay {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    
+    /* --- L'effet de flou appliqué partout --- */
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+    
+    background-color: rgba(106, 13, 173, 0.15); /* Ton mauve très léger */
+    
+    transition: backdrop-filter 0.3s ease;
+}
+
+
+.page-bg__main {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+
+.hero {
+    /* On occupe tout l'espace de la section sans dépasser */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrage vertical */
+    align-items: center;
+    /* Centrage horizontal */
+    height: 100%;
+    /* Proportionnel au parent sans scroll */
+    padding: 20px;
+    /* Safe zone mobile */
+
+    text-align: center;
+    color: #ffffff;
+    text-shadow: #180d0d;
+    /* margin (pour faire des marges generales (axe Y et X; sinon 1 seul argument-50 PX- pour marges globalrs) */
+
+}
+
+.hero__title {
+    margin: 0;
+    /* Gestion de la typographie ici */
+}
+
+
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    /* Empilement vertical sur mobile */
+    gap: 12px;
+    /* Espacement entre les boutons */
+    width: 100%;
+    /* S'adapte à la largeur du parent */
+    padding: 0 20px;
+    /* Marges de sécurité sur les côtés */
+}
+
+
+.auth__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    /* Taille cible minimale pour le pouce (UX) */
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.auth__btn--light {
+
+    background: #ffffff;
+    border: 1px solid #6a0dad;
+
+
+}
+
+.auth__btn--mauve {
+
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+
+}
+
+
+
+/* Le conteneur de ton offre promotionnelle */
+.promo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8f6ba9;
+    /* Exemple */
+    border-radius: 12px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.promo:hover {
+
+    background-color: #6a0dad;
+    transition: 0.3s;
+
+}
+
+.promo__card {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Le CTA de téléchargement */
+.cta-app {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 15px 0;
+}
+
+.cta-app__title:hover {
+
+
+    text-decoration-color: #6a0dad;
+    transition: 0.3s;
+
+}
+
+.cta-app__title {
+    margin: 0;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    /* Pour signifier le clic si ce n'est pas un bouton */
+}
+
+/* 5. On s'assure que le footer est bien visible */
+.footer {
+
+    flex-shrink: 0;
+    /* Ne doit jamais être réduit */
+    padding: 20px 0;
+
+}
+
+
+
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    /* Aligne les icônes au centre */
+    align-items: center;
+    gap: 40px;
+    /* Bien espacées pour éviter les erreurs de clic (UX) */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social-links__icon {
+    width: 20px;
+    /* Taille discrète */
+    height: auto;
+    opacity: 0.6;
+    /* Rendu discret */
+    transition: opacity 0.3s ease;
+}
+
+.social-links__link:hover .social-links__icon {
+    opacity: 1;
+    /* Devient pleinement visible au survol/touch */
+}
+
+
+
+
+
+/*====================VERSION DESKTOP============================*/
+
+@media screen and (min-width: 1024px) {
+
+    .navbar {
+
+        flex-wrap: wrap;
+        padding: 15px 40px;
+        box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .auth__btn
+    .auth__btn--light
+    .auth__btn--mauve {
+
+        display: flex;
+
+    }
+
+    .hamburger {
+        display: none;
+        /* cache le hamburger sur pc*/
+    }
+
+
+
+    /*style des auth-btn*/
+    .auth-btns {
+
+        display: flex;
+        gap: 10px;
+
+
+    }
+
+
+    .btn-light {
+
+        background: transparent;
+        border: 1px solid #666;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+
+    }
+
+    .btn-mauve {
+
+        background-color: #6a0dad;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+
+    }
+
+}
